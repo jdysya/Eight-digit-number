@@ -11,21 +11,21 @@
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
               <div @click="swapSpace(0)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[0][0], 'roll-in-right': showArray[0][1], 'roll-in-top': showArray[0][2], 'roll-in-bottom': showArray[0][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[0], 'roll-in-left': showArray[0][0], 'roll-in-right': showArray[0][1], 'roll-in-top': showArray[0][2], 'roll-in-bottom': showArray[0][3] }">
                 <span class="font-class">{{ numShow(0) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
               <div @click="swapSpace(1)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[1][0], 'roll-in-right': showArray[1][1], 'roll-in-top': showArray[1][2], 'roll-in-bottom': showArray[1][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[1], 'roll-in-left': showArray[1][0], 'roll-in-right': showArray[1][1], 'roll-in-top': showArray[1][2], 'roll-in-bottom': showArray[1][3] }">
                 <span class="font-class">{{ numShow(1) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
               <div @click="swapSpace(2)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[2][0], 'roll-in-right': showArray[2][1], 'roll-in-top': showArray[2][2], 'roll-in-bottom': showArray[2][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[2], 'roll-in-left': showArray[2][0], 'roll-in-right': showArray[2][1], 'roll-in-top': showArray[2][2], 'roll-in-bottom': showArray[2][3] }">
                 <span class="font-class">{{ numShow(2) }}</span>
               </div>
             </transition>
@@ -34,21 +34,21 @@
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
               <div @click="swapSpace(3)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[3][0], 'roll-in-right': showArray[3][1], 'roll-in-top': showArray[3][2], 'roll-in-bottom': showArray[3][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[3], 'roll-in-left': showArray[3][0], 'roll-in-right': showArray[3][1], 'roll-in-top': showArray[3][2], 'roll-in-bottom': showArray[3][3] }">
                 <span class="font-class">{{ numShow(3) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
               <div @click="swapSpace(4)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[4][0], 'roll-in-right': showArray[4][1], 'roll-in-top': showArray[4][2], 'roll-in-bottom': showArray[4][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[4], 'roll-in-left': showArray[4][0], 'roll-in-right': showArray[4][1], 'roll-in-top': showArray[4][2], 'roll-in-bottom': showArray[4][3] }">
                 <span class="font-class">{{ numShow(4) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
               <div @click="swapSpace(5)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[5][0], 'roll-in-right': showArray[5][1], 'roll-in-top': showArray[5][2], 'roll-in-bottom': showArray[5][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[5], 'roll-in-left': showArray[5][0], 'roll-in-right': showArray[5][1], 'roll-in-top': showArray[5][2], 'roll-in-bottom': showArray[5][3] }">
                 <span class="font-class">{{ numShow(5) }}</span>
               </div>
             </transition>
@@ -57,7 +57,7 @@
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
               <div @click="swapSpace(6)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[6][0], 'roll-in-right': showArray[6][1], 'roll-in-top': showArray[6][2], 'roll-in-bottom': showArray[6][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[6], 'roll-in-left': showArray[6][0], 'roll-in-right': showArray[6][1], 'roll-in-top': showArray[6][2], 'roll-in-bottom': showArray[6][3] }">
 
                 <span class="font-class">{{ numShow(6) }}</span>
 
@@ -66,7 +66,7 @@
 
             <transition name="el-zoom-in-top">
               <div @click="swapSpace(7)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[7][0], 'roll-in-right': showArray[7][1], 'roll-in-top': showArray[7][2], 'roll-in-bottom': showArray[7][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[7], 'roll-in-left': showArray[7][0], 'roll-in-right': showArray[7][1], 'roll-in-top': showArray[7][2], 'roll-in-bottom': showArray[7][3] }">
 
                 <span class="font-class">{{ numShow(7) }}</span>
 
@@ -75,7 +75,7 @@
 
             <transition name="el-zoom-in-bottom">
               <div @click="swapSpace(8)"
-                   :class="{ 'transition-box': true, 'roll-in-left': showArray[8][0], 'roll-in-right': showArray[8][1], 'roll-in-top': showArray[8][2], 'roll-in-bottom': showArray[8][3] }">
+                   :class="{ 'transition-box': true,'correct-class':correctArray[8], 'roll-in-left': showArray[8][0], 'roll-in-right': showArray[8][1], 'roll-in-top': showArray[8][2], 'roll-in-bottom': showArray[8][3] }">
                 <span class="font-class">{{ numShow(8) }}</span>
               </div>
             </transition>
@@ -166,7 +166,11 @@
     <el-row type="flex" justify="center">
       <el-button type="primary" @click="stateChange()">求解</el-button>
       <el-button type="info" @click="showSomething()">测试</el-button>
-      <el-button type="success" @click="singleStep()" :disabled='isFinish'>单步执行</el-button>
+      <el-button type="success" @click="singleStep()" :disabled='!isSuccess||isFinish'>单步执行</el-button>
+    </el-row>
+    <div class="box"></div>
+    <el-row type="flex" justify="center">
+      <el-link href="https://cloud.jdysya.top/#s/8xKBNdSQ" target="_blank" type="primary">项目说明</el-link>
     </el-row>
 
 
@@ -184,6 +188,7 @@ export default {
     endState: [1, 2, 3, 8, 0, 4, 7, 6, 5],
     // endState: [1, 2, 3, 8, 0, 4, 7, 6, 5],
     showArray: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+    correctArray: [0, 0, 0, 0, 0, 0, 0, 0, 0], //对应元素与目标位置一致，则变色
     directions: [-1, -3, 1, 3], //空格移动的方向
     aStar: {
       level: 1, //A*算法中,记录当前的层数,即g(x)
@@ -284,6 +289,13 @@ export default {
         this.$alert("当前操作非法!")
       }
     },
+
+    /**
+     * 用于更改终止状态
+     */
+    swapEndNode(){
+
+    },
     /**
      * 交换两张卡片的位置
      * @param {*} space 空格位置
@@ -330,12 +342,12 @@ export default {
       let temp2 = this.initState[nonSpace]
       this.initState.splice(space, 1, temp2)
       this.initState.splice(nonSpace, 1, temp1)
+      this.setCorrectClass()
 
     },
     /**
      * 获取传入状态空格的当前位置
      */
-
     getPrecentPos(ls) {
       let res = -1
       ls.forEach((item, index) => {
@@ -344,11 +356,22 @@ export default {
       return res
     },
     /**
+     * 将正确的元素设置颜色
+     */
+    setCorrectClass() {
+      this.initState.forEach((item, index) => {
+        if (item === this.endState[index]) {
+          this.correctArray.splice(index,1,1)
+        } else {
+          this.correctArray.splice(index,1,0)
+        }
+      })
+    },
+    /**
      * 判断移动后的空格位置是否合法
      * 若合法,便直接进行移动
      * @param {*} before  移动前的位置
      * @param {*} after 移动后的位置
-     * @param level
      * @param toDoState
      */
     isLegal(before, after, toDoState) {
@@ -480,6 +503,11 @@ export default {
         return ' '
       }
     },
+    /**
+     * 自定义排序规则
+     * @param ls
+     * @returns {*}
+     */
     mySort(ls) {
       return ls.sort((a, b) => {
         if (a.valuation > b.valuation) {
@@ -495,28 +523,7 @@ export default {
   mounted() {
     [...this.moveState] = this.initState // 深拷贝
     this.aStar.visit.add(this.initState.join()) //初始状态加入到已访问的集合中
-    let ls_test = [{
-      'arr': [1, 2, 3],
-      'val': 2
-    },
-      {
-        'arr': [1, 2, 3],
-        'val': 3
-      },
-      {
-        'arr': [1, 2, 3],
-        'val': 1
-      }
-    ]
-    ls_test = ls_test.sort((a, b) => {
-      if (a.val > b.val) {
-        return 1
-      } else if (a.val < b.val) {
-        return -1
-      } else {
-        return 0
-      }
-    })
+    this.setCorrectClass()
   }
 }
 </script>
@@ -550,6 +557,10 @@ export default {
 
 .font-class {
   font-size: xx-large
+}
+
+.correct-class {
+  background-color: #8b1cd2;
 }
 
 .jello-horizontal {
