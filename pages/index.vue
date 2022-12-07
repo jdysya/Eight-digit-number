@@ -5,25 +5,28 @@
     <el-row :gutter="20" type="flex" justify="center">
       <el-col :span="6">
         <el-card>
+          <div slot="header" class="clearfix">
+            <span>初始状态</span>
+          </div>
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
               <div @click="swapSpace(0)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[0][0], 'roll-in-right': showArray[0][1], 'roll-in-top': showArray[0][2], 'roll-in-bottom': showArray[0][3] }">
-                {{ numShow(0) }}
+                <span class="font-class">{{ numShow(0) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
               <div @click="swapSpace(1)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[1][0], 'roll-in-right': showArray[1][1], 'roll-in-top': showArray[1][2], 'roll-in-bottom': showArray[1][3] }">
-                {{ numShow(1) }}
+                <span class="font-class">{{ numShow(1) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
               <div @click="swapSpace(2)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[2][0], 'roll-in-right': showArray[2][1], 'roll-in-top': showArray[2][2], 'roll-in-bottom': showArray[2][3] }">
-                {{ numShow(2) }}
+                <span class="font-class">{{ numShow(2) }}</span>
               </div>
             </transition>
           </div>
@@ -32,21 +35,21 @@
             <transition name="el-zoom-in-center">
               <div @click="swapSpace(3)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[3][0], 'roll-in-right': showArray[3][1], 'roll-in-top': showArray[3][2], 'roll-in-bottom': showArray[3][3] }">
-                {{ numShow(3) }}
+                <span class="font-class">{{ numShow(3) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
               <div @click="swapSpace(4)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[4][0], 'roll-in-right': showArray[4][1], 'roll-in-top': showArray[4][2], 'roll-in-bottom': showArray[4][3] }">
-                {{ numShow(4) }}
+                <span class="font-class">{{ numShow(4) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
               <div @click="swapSpace(5)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[5][0], 'roll-in-right': showArray[5][1], 'roll-in-top': showArray[5][2], 'roll-in-bottom': showArray[5][3] }">
-                {{ numShow(5) }}
+                <span class="font-class">{{ numShow(5) }}</span>
               </div>
             </transition>
           </div>
@@ -55,37 +58,115 @@
             <transition name="el-zoom-in-center">
               <div @click="swapSpace(6)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[6][0], 'roll-in-right': showArray[6][1], 'roll-in-top': showArray[6][2], 'roll-in-bottom': showArray[6][3] }">
-                {{
-                  numShow(6)
-                }}
+
+                <span class="font-class">{{ numShow(6) }}</span>
+
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
               <div @click="swapSpace(7)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[7][0], 'roll-in-right': showArray[7][1], 'roll-in-top': showArray[7][2], 'roll-in-bottom': showArray[7][3] }">
-                {{
-                  numShow(7)
-                }}
+
+                <span class="font-class">{{ numShow(7) }}</span>
+
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
               <div @click="swapSpace(8)"
                    :class="{ 'transition-box': true, 'roll-in-left': showArray[8][0], 'roll-in-right': showArray[8][1], 'roll-in-top': showArray[8][2], 'roll-in-bottom': showArray[8][3] }">
-                {{ numShow(8) }}
+                <span class="font-class">{{ numShow(8) }}</span>
               </div>
             </transition>
           </div>
-          <div>当前状态:{{ isSuccess }}</div>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card>
+          <div slot="header" class="clearfix">
+            <span>结束状态</span>
+          </div>
+          <div style="display: flex; margin-top: 20px; height: 100px;">
+            <transition name="el-zoom-in-center">
+              <div @click="swapSpace(0)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(0) }}</span>
+              </div>
+            </transition>
+
+            <transition name="el-zoom-in-top">
+              <div @click="swapSpace(1)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(1) }}</span>
+              </div>
+            </transition>
+
+            <transition name="el-zoom-in-bottom">
+              <div @click="swapSpace(2)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(2) }}</span>
+              </div>
+            </transition>
+          </div>
+
+          <div style="display: flex; margin-top: 20px; height: 100px;">
+            <transition name="el-zoom-in-center">
+              <div @click="swapSpace(3)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(3) }}</span>
+              </div>
+            </transition>
+
+            <transition name="el-zoom-in-top">
+              <div @click="swapSpace(4)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(4) }}</span>
+              </div>
+            </transition>
+
+            <transition name="el-zoom-in-bottom">
+              <div @click="swapSpace(5)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(5) }}</span>
+              </div>
+            </transition>
+          </div>
+
+          <div style="display: flex; margin-top: 20px; height: 100px;">
+            <transition name="el-zoom-in-center">
+              <div @click="swapSpace(6)"
+                   class='transition-box'>
+
+                <span class="font-class">{{ numShow2(6) }}</span>
+
+              </div>
+            </transition>
+
+            <transition name="el-zoom-in-top">
+              <div @click="swapSpace(7)"
+                   class='transition-box'>
+
+                <span class="font-class">{{ numShow2(7) }}</span>
+
+              </div>
+            </transition>
+
+            <transition name="el-zoom-in-bottom">
+              <div @click="swapSpace(8)"
+                   class='transition-box'>
+                <span class="font-class">{{ numShow2(8) }}</span>
+              </div>
+            </transition>
+          </div>
         </el-card>
       </el-col>
     </el-row>
     <div class="box"></div>
     <el-row type="flex" justify="center">
-      <el-button @click="stateChange()">开始</el-button>
-      <el-button @click="showSomething()">测试</el-button>
-      <el-button @click="singleStep()" :disabled='isFinish'>单步执行</el-button>
+      <el-button type="primary" @click="stateChange()">求解</el-button>
+      <el-button type="info" @click="showSomething()">测试</el-button>
+      <el-button type="success" @click="singleStep()" :disabled='isFinish'>单步执行</el-button>
     </el-row>
 
 
@@ -119,6 +200,7 @@ export default {
   computed: {},
   methods: {
     stateChange() {
+      [...this.moveState] = this.initState
       this.getSolution(this.moveState)
     },
     showSomething() {
@@ -133,7 +215,7 @@ export default {
       let toChange = path[this.currentIndex + 1].change
       this.swapELe(toChange.before, toChange.after)
       this.currentIndex++
-      if (this.initState.join() == this.endState.join()) {
+      if (this.initState.join() === this.endState.join()) {
         this.isFinish = true
         this.$alert("已经达到最终状态！")
       }
@@ -194,6 +276,10 @@ export default {
         && Math.abs(this.getRowCol(space_pos).col - this.getRowCol(index).col) < 2) {
         console.log("可以移动");
         this.swapELe(space_pos, index)
+        if (this.initState.join() === this.endState.join()) {
+          this.isFinish = true
+          this.$alert("已经达到最终状态！")
+        }
       } else {
         this.$alert("当前操作非法!")
       }
@@ -205,7 +291,7 @@ export default {
      */
     swapELe(space, nonSpace) {
       // 需要判断两个卡片的相对位置,共有四种情况
-      if (space - nonSpace == 1) {
+      if (space - nonSpace === 1) {
         // 空格左边
         this.showArray[nonSpace].splice(1, 1, true)
         this.showArray[space].splice(0, 1, true)
@@ -213,7 +299,7 @@ export default {
           this.showArray[nonSpace].splice(1, 1, false)
           this.showArray[space].splice(0, 1, false)
         }, 600);
-      } else if (nonSpace - space == 1) {
+      } else if (nonSpace - space === 1) {
         // 空格右边
         this.showArray[nonSpace].splice(0, 1, true)
         this.showArray[space].splice(1, 1, true)
@@ -221,7 +307,7 @@ export default {
           this.showArray[nonSpace].splice(0, 1, false)
           this.showArray[space].splice(1, 1, false)
         }, 600);
-      } else if (space - nonSpace == 3) {
+      } else if (space - nonSpace === 3) {
         // 空格上边
         this.showArray[nonSpace].splice(2, 1, true)
         this.showArray[space].splice(3, 1, true)
@@ -229,7 +315,7 @@ export default {
           this.showArray[nonSpace].splice(2, 1, false)
           this.showArray[space].splice(3, 1, false)
         }, 600);
-      } else if (nonSpace - space == 3) {
+      } else if (nonSpace - space === 3) {
         // 空格下边
         this.showArray[nonSpace].splice(3, 1, true)
         this.showArray[space].splice(2, 1, true)
@@ -377,8 +463,19 @@ export default {
      * @param {*} index
      */
     numShow(index) {
-      if (this.initState[index] != 0) {
+      if (this.initState[index] !== 0) {
         return this.initState[index]
+      } else {
+        return ' '
+      }
+    },
+    /**
+     * 0不显示,显示为空
+     * @param {*} index
+     */
+    numShow2(index) {
+      if (this.endState[index] !== 0) {
+        return this.endState[index]
       } else {
         return ' '
       }
@@ -442,8 +539,17 @@ export default {
   width: 480px;
 }
 
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
 .box {
   height: 50px;
+}
+
+.font-class {
+  font-size: xx-large
 }
 
 .jello-horizontal {
