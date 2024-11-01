@@ -1,69 +1,63 @@
-# Eight-digit-number
 
-## Build Setup
+# 使用说明
 
-```bash
-# install dependencies
-$ npm install
+## 手动模式
+直接点击对应的卡片可实现手动移动，此时仍可以点击求解，将会以当前状态为初始状态使用$A*$算法进行求解
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## 智能模式
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+点击求解按钮后，可以点击使用单步执行，将会按照求解的路径进行移动
 
-# generate static project
-$ npm run generate
+# 原理
+## 核心算法
+
+定义一个优先队列，可按照估值函数进行升序排列，（队首为估值函数最小的），每次出队，进行扩展，扩展的结点入队
+
+## 一些细节
+
+1. 初始状态与终止状态都保存为一维数组
+2. 定义一个状态集合，每次将状态转为字符串加入集合中，后续需要判断扩展的结点之前是否已经存在
+3. 队列中的元素，需要记录父辈结点，当找到最终状态时，根据最终的结点往前回溯，即可获得完整路径
+
+
+
+##  八数码问题的有解无解的结论：
+
+> 为了方便讨论，我们把它写成**一维** 的形式，并以0代替空格 位置。那么表示如下：1 2 3 4 5 6 7 8 0
+
+通过实验得知，以下状态是无解的（交换了前两个数字1 2）：
+2 1 3 4 5 6 7 8 0
+
+一个状态表示成一维的形式，求出除0之外所有数字的逆序数之和，也就是每个数字前面比它大的数字的个数的和，称为这个状态的逆序。
+
+**若两个状态的逆序奇偶性 相同，则可相互到达，否则不可相互到达。**
+
+**简要说明一下：** 当左右移动空格时，逆序不变。 当上下移动空格时，相当于将一个数字向前（或向后）移动两格，跳过 的这两个数字要么都比它大（小），逆序可能±2；要么一个较大一个较小，逆序不变。所以可得结论：只要是相互可达的两个状态，它们的逆序奇偶性相同。
+
+
+
+# 从源码构建
+
+本项目基于web开发，使用的技术栈有`elementUI`、`Vue.js`、`nuxt.js`,
+
+若需要运行源码，则首先需要保证构建源码的机器有`node`环境，在学习通平台已经提交对应的项目源码，下载后在项目根路径下执行以下命令
+
+```
+npm install
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+即可安装对应的`node`依赖
 
-## Special Directories
+随后执行
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+```
+npm run dev
+```
 
-### `assets`
+即可将本项目绑定到本地端口进行访问
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+![image-20230218204504712](https://cdn.jdysya.top/lsky/2023/02/18/1/e78b0baa298385a6.png)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+项目界面如下所示
 
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+![image-20230218204531533](https://cdn.jdysya.top/lsky/2023/02/18/1/bcc6eb704a5d062f.png)

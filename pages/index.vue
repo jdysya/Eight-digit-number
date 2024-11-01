@@ -89,21 +89,21 @@
           </div>
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
-              <div @click="swapSpace(0)"
+              <div @click="swapEndNode(0)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(0) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
-              <div @click="swapSpace(1)"
+              <div @click="swapEndNode(1)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(1) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
-              <div @click="swapSpace(2)"
+              <div @click="swapEndNode(2)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(2) }}</span>
               </div>
@@ -112,21 +112,21 @@
 
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
-              <div @click="swapSpace(3)"
+              <div @click="swapEndNode(3)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(3) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-top">
-              <div @click="swapSpace(4)"
+              <div @click="swapEndNode(4)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(4) }}</span>
               </div>
             </transition>
 
             <transition name="el-zoom-in-bottom">
-              <div @click="swapSpace(5)"
+              <div @click="swapEndNode(5)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(5) }}</span>
               </div>
@@ -135,7 +135,7 @@
 
           <div style="display: flex; margin-top: 20px; height: 100px;">
             <transition name="el-zoom-in-center">
-              <div @click="swapSpace(6)"
+              <div @click="swapEndNode(6)"
                    class='transition-box'>
 
                 <span class="font-class">{{ numShow2(6) }}</span>
@@ -144,7 +144,7 @@
             </transition>
 
             <transition name="el-zoom-in-top">
-              <div @click="swapSpace(7)"
+              <div @click="swapEndNode(7)"
                    class='transition-box'>
 
                 <span class="font-class">{{ numShow2(7) }}</span>
@@ -153,7 +153,7 @@
             </transition>
 
             <transition name="el-zoom-in-bottom">
-              <div @click="swapSpace(8)"
+              <div @click="swapEndNode(8)"
                    class='transition-box'>
                 <span class="font-class">{{ numShow2(8) }}</span>
               </div>
@@ -178,7 +178,6 @@
 </template>
 
 <script>
-// import {PriorityQueue} from '../common/queue.js'
 export default {
   data: () => ({
     // showArray[0]: true,
@@ -211,6 +210,10 @@ export default {
     showSomething() {
       // this.aStar.currentList[0]=666
       console.log(this.aStar)
+      let reverse1 = this.getReversedOrder(this.initState)
+      let reverse2 = this.getReversedOrder(this.endState)
+      console.log(reverse1)
+      console.log(reverse2)
     },
     /**
      * 根据事先推算出的路径,单步运行
@@ -233,6 +236,12 @@ export default {
      * @param {*} level 层数
      */
     getSolution(toDoState) {
+      let reverse1 = this.getReversedOrder(toDoState)
+      let reverse2 = this.getReversedOrder(this.endState)
+      if (!((reverse1 % 2 === 1 && reverse2 % 2 === 1) || (reverse1 % 2 === 0 && reverse2 % 2 === 0))) {
+        this.$alert("当前状态无解！")
+        return false
+      }
       let distance = this.getDistance(toDoState)
       console.log(this.aStar.currentQueue)
       this.aStar.currentQueue.push({
@@ -277,7 +286,7 @@ export default {
       console.log("现在点击的是第" + index + "个卡片");
       // 先获取当前空格所在的位置
       let space_pos = this.getPrecentPos(this.initState)
-      if ((Math.abs(index - space_pos) == 1 || Math.abs(index - space_pos) == 3)
+      if ((Math.abs(index - space_pos) === 1 || Math.abs(index - space_pos) === 3)
         && Math.abs(this.getRowCol(space_pos).col - this.getRowCol(index).col) < 2) {
         console.log("可以移动");
         this.swapELe(space_pos, index)
@@ -292,9 +301,16 @@ export default {
 
     /**
      * 用于更改终止状态
+     * 移动空格到指定位置
      */
-    swapEndNode(){
-
+    swapEndNode(index) {
+      let space_pos = this.getPrecentPos(this.endState)
+      let temp = this.endState[index]
+      this.endState.splice(space_pos, 1, temp)
+      this.endState.splice(index, 1, 0)
+      this.aStar.visit.clear() // 清空状态集合
+      this.aStar.visit.add(this.initState.join()) //初始状态加入到已访问的集合中
+      this.setCorrectClass()
     },
     /**
      * 交换两张卡片的位置
@@ -361,11 +377,20 @@ export default {
     setCorrectClass() {
       this.initState.forEach((item, index) => {
         if (item === this.endState[index]) {
-          this.correctArray.splice(index,1,1)
+          this.correctArray.splice(index, 1, 1)
         } else {
-          this.correctArray.splice(index,1,0)
+          this.correctArray.splice(index, 1, 0)
         }
       })
+    },
+    getReversedOrder(ls) {
+      let count = 0;
+      for (let i = 1; i < ls.length; i++) {
+        for (let j = 0; j < i; j++) {
+          if (ls[j] > ls[i] && ls[j] !== 0 && ls[i] !== 0) count++;
+        }
+      }
+      return count
     },
     /**
      * 判断移动后的空格位置是否合法
@@ -521,7 +546,7 @@ export default {
     }
   },
   mounted() {
-    [...this.moveState] = this.initState // 深拷贝
+    // [...this.moveState] = this.initState // 深拷贝
     this.aStar.visit.add(this.initState.join()) //初始状态加入到已访问的集合中
     this.setCorrectClass()
   }
